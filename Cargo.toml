@@ -1,0 +1,39 @@
+[package]
+name = "qsafe"
+version = "0.1.0"
+edition = "2021"
+authors = ["QSafe Team"]
+description = "Enterprise-grade quantum-safe local storage vault"
+
+[dependencies]
+# Post-Quantum FIPS 203 ML-KEM
+ml-kem = { version = "0.3", features = ["zeroize"] }
+
+# Classical Elliptic Curve for Hybrid KEM
+x25519-dalek = { version = "3.0", features = ["static_secrets", "zeroize"] }
+
+# Symmetric AEAD & Stream Encryption
+chacha20poly1305 = { version = "0.11", features = ["zeroize"] }
+aes-gcm = { version = "0.11", features = ["zeroize"] }
+
+# Memory-Hard KDF & Key Derivation
+argon2 = { version = "0.6", features = ["zeroize"] }
+hkdf = "0.12"
+sha2 = "0.10"
+
+# Entropy & Randomness
+rand_core = "0.10"
+getrandom = { version = "0.4", features = ["sys_rng"] }
+
+# Memory Security & Constant-Time Operations
+zeroize = { version = "1.8", features = ["zeroize_derive"] }
+subtle = "2.6"
+
+# CLI & UX
+clap = { version = "4.5", features = ["derive"] }
+indicatif = "0.17"
+rpassword = "7.3"
+thiserror = "1.0"
+
+[dev-dependencies]
+tempfile = "3.10"
